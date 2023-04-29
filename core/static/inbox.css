@@ -1,0 +1,16 @@
+.cardd{
+    --animate-duration: 0.7s;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    transition: .2s; 
+}
+
+ .cardd:hover{
+    transform: scale(1.03);
+  }

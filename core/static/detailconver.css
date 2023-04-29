@@ -1,0 +1,14 @@
+.card{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    
+    margin-top: 15px;
+    margin-bottom: 15px;
+    transition: .2s; 
+    transition: 0.2s;
+}
+.card:hover{
+    transform: scale(1.03);
+  }

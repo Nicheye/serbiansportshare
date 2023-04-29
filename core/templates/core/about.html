@@ -1,0 +1,50 @@
+{% extends 'core/base.html'%}
+{%block title%}Welcome{%endblock%}
+{%block head%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'about.css' %}">
+<link rel="stylesheet" href="{% static 'guideline.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+{%endblock%}
+{%block content%} 
+<section class="about-us wow animate__bounceIn">
+    <div class="heading">
+        <h1 >
+        
+            <span class="magic">
+              <span class="magic-star">
+                <svg viewBox="0 0 512 512">
+                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                </svg>
+              </span>
+              <span class="magic-star">
+                <svg viewBox="0 0 512 512">
+                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                </svg>
+              </span>
+              <span class="magic-star">
+                <svg viewBox="0 0 512 512">
+                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                </svg>
+              </span>
+              <span class="magic-text">About Us</span>
+            </span>
+            
+          </h1>
+        <P>We are Serbian Sport Sharing organisation.We situated in Belgrad,Serbia</P>
+      </div>
+      <div class="container">
+        <section class="about">
+            <div class="about-image">
+                <img src="{%static 'sss.jpg'%}">
+            </div>
+            <div class="about-content">
+                <h2>Our Goal</h2>
+                
+                <p>Not everyone has opportunity to buy new sport inventory.So We want to make possible sharing sport inventory in Serbia.Someone wants to give away an old sport stuff, and others want to get inventory and clothes to train.So we want to make possible deals bettween these two types of people <culpa class="lore"></culpa></p>
+                <a href="{% url 'core:index' %}" class="read-more">Get Started</a>
+            </div>
+        </section>
+      </div>
+</section>
+{%endblock%}

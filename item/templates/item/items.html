@@ -1,0 +1,70 @@
+{%extends 'core/base.html'%}
+
+{%block title%}Items{%endblock%}
+{%block head%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'browser.css' %}">
+
+{%endblock%}
+{%block content%}
+
+      
+<div class="">
+    <section style="padding-left: 50px; padding-right: 50px; background-color: #F1F4F5; border-radius: 10px;" >
+        
+        
+        <div style="padding-bottom: 25px; ">
+           
+           <div class="row" style="padding-top: 25px;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; margin-bottom: 10px; ">
+                
+                
+                <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                    <form method="get" action="{%url 'item:items'%} " class="d-flex" role="search">
+                        <input name="query" class="form-control me-2" type="text" placeholder="Search" value="{{query}}" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </li><br/>
+                  <p>Categories</p>
+                  {%for category in categories%}
+                  <li class="nav-item {% if category.id == category_id %} {% endif %}" style="padding-top: 5px; padding-bottom: 5px;" >
+                    <a href="{%url 'item:items'%}?query={{query}}&category={{category.id}}" class="btn btn-outline-dark-lg" >
+                      {{category.name}}
+                    </a>
+                  </li>
+                  {%endfor%}
+                </ul>
+
+                <hr>
+                <p>Clear Filters</p>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="btn btn-warning"><a href="{%url 'item:items'%}">Clear </a></li>
+                </ul>
+               
+              </div>
+           {%for item in items%}
+           
+         <div class="col-sm-2" style="padding-top: 10px; padding-bottom: 10px;">
+           <a href="{% url 'item:detail' item.id %}" style="text-decoration: none;">
+           <div class="card" style="border-radius: 0; ">
+             <img src="{{item.image.url}}" class="card-img-top" style="border-radius: 0; ">
+             <div class="card-body">
+               <h5 class="card-title">{{item.name}}</h5>
+               <p class="card-text">Price:{{item.price}}$</p>
+               
+             </div>
+           </a>
+           </div>
+           <br/>
+         </div>
+         
+       
+       {%endfor%}
+       </div>
+        </div>
+       </section>
+
+
+
+{%endblock %}

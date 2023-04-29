@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    {%block head%}{%endblock%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js" integrity="sha512-Rd5Gf5A6chsunOJte+gKWyECMqkG8MgBYD1u80LOOJBfl6ka9CtatRrD4P0P5Q5V/z/ecvOCSYC8tLoWNrCpPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js" integrity="sha512-C1zvdb9R55RAkl6xCLTPt+Wmcz6s+ccOvcr6G57lbm8M2fbgn2SUjUJbQ13fEyjuLViwe97uJvwa1EUf4F1Akw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+    <title>{%block title %}{%endblock%}</title>
+</head>
+<body>  <!--navbar -->
+  
+    <section>
+      <header>
+        <a href="/"><div class="logo">Sport Share
+          
+        </div></a>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          
+        </div>
+        <div class="nav-bar">
+          <ul>
+            <li>
+              <a href="/" class="active" style="text-decoration: none;"><ion-icon name="home-outline"></ion-icon><!--Home--></a>
+            </li>
+            <li  >
+              <a  aria-current="page" href="{% url 'item:new'%} " style="text-decoration: none;"><ion-icon name="add-outline"></ion-icon><!--New Item--></a>
+            </li>
+
+            <li  >
+              <a  href="{%url 'item:items'%}" style="text-decoration: none;"><!--Browse--> <ion-icon name="search-outline"></ion-icon></a>
+            </li>
+            {%if request.user.is_authenticated%}
+
+            <li>
+              <a href="{%url 'dashboard:index' request.user%}" class="active" style="text-decoration: none;"><ion-icon name="clipboard-outline"></ion-icon><!--DashBoard--></a>
+              
+            </li>
+            <li>
+              <a href="{%url 'conversation:inbox'%}" class="active" style="text-decoration: none;" ><ion-icon name="chatbox-outline"></ion-icon><!--InBox--></a>
+            </li>
+            
+            <li >
+              <a class="nav-link" href="{%url 'core:logout'%}" ><ion-icon name="log-out-outline"></ion-icon><!--Logout--></a>
+            </li>
+            {%else%}
+            <li>
+              <a class="nav-link" href="{%url 'core:login'%}" ><ion-icon name="person-outline"></ion-icon></a>
+            </li>
+            {%endif%}
+
+
+          </ul>
+        </div>
+      </header>
+      <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function(){
+          navbar = document.querySelector(".nav-bar");
+          navbar.classList.toggle("active");
+        }
+      </script>
+      
+    </section>
+    <!--navbae end-->
+    
+        {%block content%}
+
+        {%endblock%}
+   
+    <section class="">
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: #11101b">
+          <!-- Grid container -->
+          <div class="container p-4 pb-0">
+            <!-- Section: CTA -->
+            <section class="">
+                <h3>About</h3>
+              <p class="d-flex justify-content-center align-items-center">
+                <span class="me-3" style="color: #fff;">Make Deals Possible.</span>
+                
+              </p>
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Menu</h5>
+        
+                <ul class="list-unstyled mb-0">
+                  <div class=" wow animate__animated animate__fadeInUp animate__slow">
+                  
+                  <li>
+                    <a href="{%url 'core:guideline'%}" class="text-white animate__bounce">GuideLine </a>
+                  </li>
+                  <li>
+                    <a href="{%url 'core:signup'%}" class="text-white">Sign UP </a>
+                  </li>
+                  
+                  <li>
+                    <a href="{%url 'core:about'%}" class="text-white">About</a>
+                  </li>
+                </div>
+                </ul>
+              </div>
+            </section>
+            <!-- Section: CTA -->
+          </div>
+          <!-- Grid container -->
+      
+          <!-- Copyright -->
+         
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+      </section>
+      
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+              <script>
+              new WOW().init();
+              </script>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
+</body>
+</html>

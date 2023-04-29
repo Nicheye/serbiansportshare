@@ -1,0 +1,65 @@
+{% extends 'core/base.html'%}
+{%block title%}{{item.name}}{%endblock%}
+{%block head%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'detail.css' %}">
+
+{%endblock%}
+{%block content%}
+<!--section detail-->
+<section style="padding-top: 20px;">
+<div class="card mb-3 " style="max-width: 100%; border-radius: 10px; background-color: #F1F4F5; padding-top: 20px; padding-left: 20px; padding-right: 20px; border: #0a4275; padding-bottom: 20px;" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{item.image.url}}" class="img-fluid rounded-start wow animate__bounceIn" style="border: solid;" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">{{item.name}}</h5>
+          <h3 class="card-text">{{item.description}}</p>
+            <h4 class="card-text">Address: {{item.address}}</p>
+            <h4 class="card-text">Seller:{{item.created_by}}</p>
+              <p class="card-text"><small class="text-muted">Price:{{item.price}}$</small></p>
+          {%if request.user == item.created_by%}  
+            <div class="">
+            <p>this is your item</p>
+            <a href="{% url 'item:delete' item.id %} " class="btn btn-danger">Delete</a>
+            <a href="{% url 'item:edit' item.id %} " class="btn btn-success">Edit</a>
+            </div>
+          {%else%}  
+          
+          <a href="{% url 'conversation:new' item.id%}" class="button-48"><span class="text">Contact Seller</span></a>
+          {%endif%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+<br/>
+<!--section related items-->
+  <section style="padding-left: 50px; padding-right: 50px; background-color: #F1F4F5; border-radius: 10px; padding-top: 20px;" >
+    <div style="padding-bottom:  25px;">
+       <h2 style="padding-left: 25px; ">Related Items</h2>
+       <div class="row" style="padding-top: 25px;">
+       {%for item in related_items%}
+       
+     <div class="col-sm-3">
+       <a href="{% url 'item:detail' item.id %}">
+       <div class="card">
+         <img src="{{item.image.url}}" class="card-img-top">
+         <div class="card-body">
+           <h5 class="card-title">{{item.name}}</h5>
+           <p class="card-text">Price:{{item.price}}$</p>
+           
+         </div>
+       </a>
+       </div>
+       <br/>
+     </div>
+     
+   
+   {%endfor%}
+   </div>
+    </div>
+   </section>  
+{%endblock %}
